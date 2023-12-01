@@ -11,6 +11,10 @@
 (setq user-full-name "Sunny Hasija"
       user-mail-address "hasija.4@osu.edu")
 
+(unless (equal "Battery status not available"
+               (battery))
+  (display-battery-mode 1))                           ; On laptops it's nice to know how much power you have
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Dropbox/Org/"
@@ -70,6 +74,20 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You an either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
+
+(after! doom-modeline
+  (setq doom-modeline-enable-word-count t
+        doom-modeline-header-line nil
+        ;doom-modeline-hud nil
+        doom-themes-padded-modeline t
+        doom-flatwhite-brighter-modeline nil
+        doom-plain-brighter-modeline nil))
+(add-hook! 'doom-modeline-mode-hook
+           (progn
+  (set-face-attribute 'header-line nil
+                      :background (face-background 'mode-line)
+                      :foreground (face-foreground 'mode-line))
+  ))
 
 (after! doom-modeline
   (doom-modeline-def-modeline 'main
@@ -887,57 +905,14 @@ Imitates the look of wordprocessors a bit."
                                    :cost-false-neg 0)))
   (eva-mode))
 
+(setq vterm-shell "/usr/bin/fish")
+
+(setq evil-escape-key-sequence "qd")
+
 (use-package! info-colors
   :commands (info-colors-fontify-node))
 
 (add-hook 'Info-selection-hook 'info-colors-fontify-node)
-
-(map! "C-w" nil)
-(global-set-key  (kbd "C-<tab>") #'evil-window-next)
- (global-set-key             (kbd "C-<iso-lefttab>") #'evil-window-prev)
-     (global-set-key   (kbd "C-w") #'ace-window)
-
-(map!
-    :nvig "C-<iso-lefttab>" #'evil-window-prev
-      :nvig  "C-w" #'ace-window)
-(map! :nvig "C-<tab>" #'evil-window-next)
-
-(map!  :nvig "C-'" #'er/expand-region)
-
-(use-package! all-the-icons-ivy-rich
-  :init (all-the-icons-ivy-rich-mode))
-
-(defun margin-width-pixel (&optional right)
-  "Return the width of the left or optionally right margin in pixels."
-  (if (window-margins)
-     (if right
-           (* (frame-char-width) (cdr (window-margins))) ;;right margin
-          (* (frame-char-width) (car (window-margins))))
-          0))
-
-(server-start)
-
-(unless (equal "Battery status not available"
-               (battery))
-  (display-battery-mode 1))                           ; On laptops it's nice to know how much power you have
-
-(after! doom-modeline
-  (setq doom-modeline-enable-word-count t
-        doom-modeline-header-line nil
-        ;doom-modeline-hud nil
-        doom-themes-padded-modeline t
-        doom-flatwhite-brighter-modeline nil
-        doom-plain-brighter-modeline nil))
-(add-hook! 'doom-modeline-mode-hook
-           (progn
-  (set-face-attribute 'header-line nil
-                      :background (face-background 'mode-line)
-                      :foreground (face-foreground 'mode-line))
-  ))
-
-(setq vterm-shell "/usr/bin/fish")
-
-(setq evil-escape-key-sequence "qd")
 
 (map! :leader
       (:prefix-map ("r" . "regular")
@@ -982,6 +957,31 @@ Imitates the look of wordprocessors a bit."
        :desc  "show next" "n" #'org-gtd-show-all-next
        :desc  "show stuck project" "s" #'org-gtd-show-stuck-projects)
       )
+
+(map! "C-w" nil)
+(global-set-key  (kbd "C-<tab>") #'evil-window-next)
+ (global-set-key             (kbd "C-<iso-lefttab>") #'evil-window-prev)
+     (global-set-key   (kbd "C-w") #'ace-window)
+
+(map!
+    :nvig "C-<iso-lefttab>" #'evil-window-prev
+      :nvig  "C-w" #'ace-window)
+(map! :nvig "C-<tab>" #'evil-window-next)
+
+(map!  :nvig "C-'" #'er/expand-region)
+
+(use-package! all-the-icons-ivy-rich
+  :init (all-the-icons-ivy-rich-mode))
+
+(defun margin-width-pixel (&optional right)
+  "Return the width of the left or optionally right margin in pixels."
+  (if (window-margins)
+     (if right
+           (* (frame-char-width) (cdr (window-margins))) ;;right margin
+          (* (frame-char-width) (car (window-margins))))
+          0))
+
+(server-start)
 
 (defun org-hugo-new-subtree-post-capture-template ()
   "Returns `org-capture' template string for new Hugo post.
