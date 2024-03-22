@@ -125,8 +125,8 @@ Since this is a comfy config for writing, proportional fonts are what we want, b
 Fira Code is amazing, and so is Roboto.
 
 #+begin_src emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "FiraCode" :size 15 :weight 'light)
-       doom-variable-pitch-font (font-spec :family "Roboto" :style "Regular" :size 12 :weight 'regular))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15 :weight 'light)
+       doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :style "Regular" :size 12 :weight 'regular))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You an either set `doom-theme' or manually load a theme with the

@@ -68,8 +68,8 @@
   :config
   (setq mixed-pitch-face 'variable-pitch))
 
-(setq doom-font (font-spec :family "FiraCode" :size 15 :weight 'light)
-       doom-variable-pitch-font (font-spec :family "Roboto" :style "Regular" :size 12 :weight 'regular))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15 :weight 'light)
+       doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :style "Regular" :size 12 :weight 'regular))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You an either set `doom-theme' or manually load a theme with the
@@ -222,28 +222,19 @@
 ;)
 
 (use-package! org-noter
-  :after (:any org pdf-view)
-  :config
-  (setq
-   ;; The WM can handle splits
-   ;;org-noter-notes-window-location 'other-frame
-   ;; Please stop opening frames
-   ;;org-noter-always-create-frame nil
-   ;; I want to see the whole file
-   org-noter-hide-other nil
-   ;; Everything is relative to the rclone mega
-   org-noter-notes-search-path "~/Dropbox/Org/references/notes"
-   )
-  )
-
-
-(use-package! org-pdftools
-  :hook (org-load . org-pdftools-setup-link))
-(use-package! org-noter-pdftools
-  :after org-noter
-  :config
-  (with-eval-after-load 'pdf-annot
-    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+:after (:any org pdf-view)
+:config
+(setq
+ ;; The WM can handle splits
+ ;;org-noter-notes-window-location 'other-frame
+ ;; Please stop opening frames
+ ;;org-noter-always-create-frame nil
+ ;; I want to see the whole file
+ org-noter-hide-other nil
+ ;; Everything is relative to the rclone mega
+ org-noter-notes-search-path "~/Dropbox/Org/references/notes"
+ )
+)
 
 (use-package! org-ol-tree
   :after org

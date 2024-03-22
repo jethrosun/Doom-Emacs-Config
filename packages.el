@@ -53,6 +53,8 @@
 ;; When using bibtex-completion via the `biblio` module
 (unpin! bibtex-completion helm-bibtex ivy-bibtex)
 
+(package! academic-phrases)
+
 (package! evil-workman-mode
   :recipe (
            :host github
@@ -82,8 +84,8 @@
 ;(package! nroam)
 (package! org-fragtog)
 (package! org-appear :recipe (:host github :repo "awth13/org-appear"))
-(package! org-noter-pdftools)
-(package! org-pdftools)
+;; (package! org-noter-pdftools)
+;; (package! org-pdftools)
 (package! olivetti)
 (package! binder)
 
@@ -114,8 +116,8 @@
 (package! erefactor)
 
 (package! svg-tag-mode :recipe (:host github :repo "rougier/svg-tag-mode"))
-(package! mu4e-dashboard :recipe (:host github :repo "rougier/mu4e-dashboard"))
-(package! mu4e-thread-folding :recipe (:host github :repo "rougier/mu4e-thread-folding"))
+;; (package! mu4e-dashboard :recipe (:host github :repo "rougier/mu4e-dashboard"))
+;; (package! mu4e-thread-folding :recipe (:host github :repo "rougier/mu4e-thread-folding"))
 ;(package! org-agenda :recipe (:host github :repo "rougier/mu4e-thread-folding"))
 
 (package! dashboard)

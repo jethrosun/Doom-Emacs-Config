@@ -22,7 +22,7 @@
        company           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy +icons +fuzzy +posframe)               ; a search engine for love and life
+       ;; (ivy +icons +fuzzy +posframe)               ; a search engine for love and life
      ; (vertico +icons)
 
        :ui
@@ -33,7 +33,7 @@
        (emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       hydra
+       ;; hydra ; broken
        ;;indent-guides     ; highlighted indent columns
        (ligatures +extra )         ; ligatures and symbols to make your code pretty again
        minimap           ; show a map of the code on the side
@@ -170,7 +170,7 @@
        yaml              ; JSON, but readable
 
        :email
-       (mu4e +gmail)
+       ;; (mu4e +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
 
